@@ -4,6 +4,8 @@ const fs = require('fs');
 const date = require('./modules/utils');
 let userString = require('./lang/en/en');
 
+const PORT = process.env.PORT || 8000;
+
 class DateHandler {
     displayDate(req, res) {
         const req_url = url.parse(req.url, true);
@@ -70,9 +72,9 @@ class Server {
                 res.writeHead(404, {'content-type': 'text'});
                 res.end('404\nOptions: getDate, writeFile, readFile.')
             }
-        }).listen(9001);
+        }).listen(PORT);
         console.log('Starting server...');
-        // http://localhost:9001
+        // http://localhost:8000
     }
 }
 
