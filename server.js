@@ -47,7 +47,7 @@ class FileHandler {
                 res.writeHead(200, {'content-type': 'text'});
                 res.end(text); // display text 
             }
-        })
+        });
     }
 }
 
@@ -74,7 +74,7 @@ class Server {
             }
         }).listen(PORT);
         console.log('Starting server...');
-        // http://localhost:8000
+        // http://localhost:8000 or https://comp4537-lab3-5iup.onrender.com/
     }
 }
 
