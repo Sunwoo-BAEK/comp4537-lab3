@@ -23,7 +23,7 @@ class FileHandler {
 
     writeFile(req,res) {
         const req_url = url.parse(req.url, true);
-        const text = req_url.query["text"];
+        const text = decodeURIComponent(req_url.query["text"]);
         fs.appendFile('file.txt', text + '\n', (err) => {
             if (err) {
                 res.writeHead(500, {'content-type': 'text'});
@@ -32,13 +32,13 @@ class FileHandler {
                 res.writeHead(200, {'content-type': 'text'});
                 res.end('Text written to file!');
             }
-        })
+        });
     }
 
     readFile(req,res) {
         const req_url = url.parse(req.url);
         const pathname = req_url.pathname;
-        const filename = pathname.replace('/readFile', '');
+        const filename = decodeURIComponent(pathname.replace('/readFile', ''));
         fs.readFile(filename.replace('/', ''), (err, text) => {
             if (err) {
                 res.writeHead(404, {'content-type': 'text'});
